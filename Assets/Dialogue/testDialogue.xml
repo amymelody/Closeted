@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dialogue>
+	<group>
+		<string id="test">
+			<text>Goodbye World!</text>
+		</string>
+	</group>
+</dialogue>

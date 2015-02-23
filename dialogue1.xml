@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<game>
+	<dialogue id="0">
+		<color>cyan</color>
+		<text>Closeted</text>
+		<color>white</color>
+		<makeChoice id="Are you a boy or a girl?">
+			<choice id="Boy">
+				<command>gender=boy</command>
+				<command>assignedGender=girl</command>
+			</choice>
+			<choice id="Girl">
+				<command>gender=girl</command>
+				<command>assignedGender=boy</command>
+			</choice>
+			<choice id="Neither">
+				<command>gender=nonbinary</command>
+				<command>assignedGender=random</command>
+			</choice>
+		</makeChoice>
+		<if gender="nonbinary">
+			<text>Neither? Don't be ridiculous! You look like a [assignedGender] to me.</text>
+		</if>
+		<if gender="!nonbinary">
+			<text>What? You look like a [assignedGender] to me.</text>
+		</if>
+		<jump>2</jump>
+	</dialogue>
+	
+	<dialogue id="2">
+		<input id="What is your name?">name</input>
+		<text>[name]?</text>
+		<text>But it says right here that your name is [givenName].</text>
+		<color>green</color>
+		<text>I don't know why they think I'm a [assignedGender]. I look nothing like a [assignedGender]!</text>
+		<makeChoice id="Now, should I get ready for the day?">
+			<choice id="Yes">
+				<jump>3</jump>
+			</choice>
+			<choice id="No">
+				<jump>4</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="3">
+		<command>ready=true</command>
+		<text>...</text>
+		<if dysphoria="0">
+			<text>*sigh* Who am I kidding? One look in the mirror tells me that everyone else will see me as a [assignedGender].</text>
+		</if>
+		<if dysphoria="0">
+			<if gender="nonbinary">
+				<text>No one's going to get my gender right because they don't even know it exists.</text>
+			</if>
+		</if>
+		<if dysphoria="0">
+			<if gender="!nonbinary">
+				<text>No one's going to see me as [gender] unless I conform to their standards.</text>
+			</if>
+		</if>
+		<if dysphoria="!0">
+			<text>*sigh* Who am I kidding? I'll never look as good as I want to.</text>
+		</if>
+		<if dysphoria="!0">
+			<text>Sometimes I can't stand looking in the mirror.</text>
+		</if>
+		<makeChoice id="Should I shower?">
+			<choice id="Yes">
+				<jump>5</jump>
+			</choice>
+			<choice id="No">
+				<jump>6</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="4">
+		<if dysphoria="0">
+			<text>Eh, I'm not really feeling it right now.</text>
+		</if>
+		<if dysphoria="1">
+			<text>Yeah...I don't want to look at myself today.</text>
+		</if>
+		<if dysphoria="2">
+			<text>I can just never bring myself to look in the mirror...</text>
+		</if>
+		<jump>18</jump>
+	</dialogue>
+	
+	<dialogue id="5">
+		<if dysphoria="0">
+			<text>Why wouldn't I shower?</text>
+		</if>
+		<if dysphoria="1">
+			<text>Just don't look down... Pretend they're not there.</text>
+		</if>
+		<if dysphoria="2">
+			<text>You can do this, [name]. Just don't look down at all.</text>
+		</if>
+		<makeChoice id="Should I shave my body hair?">
+			<choice id="Yes">
+				<if assignedGender="male">
+					<jump>7</jump>
+				</if>
+				<if assignedGender="female">
+					<jump>8</jump>
+				</if>
+			</choice>
+			<choice id="No">
+				<if assignedGender="male">
+					<jump>9</jump>
+				</if>
+				<if assignedGender="female">
+					<jump>10</jump>
+				</if>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="6">
+		<text>Nah, I don't have to.</text>
+		<if dysphoria="!0">
+			<text>Besides, the less I have to see down there the better.</text>
+		</if>
+		<text>I should at least brush my teeth and stuff.</text>
+		<jump>19</jump>
+	</dialogue>
+	
+	<dialogue id="7">
+		<text>I haven't shaved anything except my face once in my life. People are sure to notice...</text>
+		<makeChoice id="Am I sure I want to do this?">
+			<choice id="I'm sure">
+				<jump>11</jump>
+			</choice>
+			<choice id="I don't think so">
+				<jump>12</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="8">
+		<text>Gotta love those beauty standards for women.</text>
+		<jump>13</jump>
+	</dialogue>
+	
+	<dialogue id="9">
+		<if dysphoria="0">
+			<if gender="female">
+				<text>Yeah, I don't have to worry about that until I'm out and going femme full-time.</text>
+			</if>
+		</if>
+		<if dysphoria="0">
+			<if gender="!female">
+				<text>I'm pretty comfortable with my body hair.</text>
+			</if>
+		</if>
+		<if dysphoria="!0">
+			<text>As much as I'd like to, people might notice and ask me questions.</text>
+		</if>
+		<if dysphoria="!0">
+			<text>I wish I would have figured this stuff out sooner...</text>
+		</if>
+		<jump>13</jump>
+	</dialogue>
+	
+	<dialogue id="10">
+		<text>People are sure to notice if I don't shave since everyone sees me as a girl.</text>
+		<makeChoice id="Am I sure I want to do this?">
+			<choice id="I'm sure">
+				<jump>11</jump>
+			</choice>
+			<choice id="I don't think so">
+				<jump>12</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="11">
+		<text>I've got to start taking steps eventually. And there's no time like the present!</text>
+		<if assignedGender="female">
+			<text>Besides, lots of cis women don't shave.</text>
+		</if>
+		<jump>13</jump>
+	</dialogue>
+	
+	<dialogue id="12">
+		<text>Better play it safe.</text>
+		<if assignedGender="male">
+			<if dysphoria="0">
+				<text>Besides, I don't really care either way whether I have body hair.</text>
+			</if>
+		</if>
+		<if assignedGender="male">
+			<if dysphoria="!0">
+				<text>As much as I want to, I don't want to get any looks.</text>
+			</if>
+		</if>
+		<jump>13</jump>
+	</dialogue>
+	
+	<dialogue id="13">
+		<text>OK, I'm all showered.</text>
+		<if dysphoria="2">
+			<text>Better put on my clothes as quickly as possible...</text>
+		</if>
+		<jump>19</jump>
+	</dialogue>
+	
+	<dialogue id="14">
+		<if assignedGender="male">
+			<text>I only have boy clothes. This stuff is just to make me feel better in private.</text>
+		</if>
+		<if assignedGender="male">
+			<jump>20</jump>
+		</if>
+		<text>Yeah my friends always see me with at least some kind of makeup. Guess it would be pretty weird if I stopped now...</text>
+		<text>*sigh* Why didn't I figure out this shit sooner?</text>
+		<jump>18</jump>
+	</dialogue>
+	
+	<dialogue id="15">
+		<if assignedGender="male">
+			<text>As much as I'd like to, I only have boy clothes so it would be pretty weird if I put on makeup.</text>
+		</if>
+		<if assignedGender="female">
+			<text>My friends always see me with at least some kind of makeup, but I'm sure they won't notice if I don't have any today.</text>
+		</if>
+		<jump>18</jump>
+	</dialogue>
+	
+	<dialogue id="16">
+		<text>Yeah why not? Fuck gender roles!</text>
+		<jump>18</jump>
+	</dialogue>
+	
+	<dialogue id="17">
+		<text>Yeah it was a silly idea to begin with.</text>
+		<jump>18</jump>
+	</dialogue>
+	
+	<dialogue id="18">
+		<if goingOut="true">
+			<text>OK, I'm all ready. Time to go out and get those clothes!</text>
+		</if>
+		<if goingOut="true">
+			<jump>24</jump>
+		</if>
+		<text>Well, I've got plenty of time before class.</text>
+		<makeChoice id="What should I do?">
+			<choice id="Go shopping for better clothes">
+				<jump>21</jump>
+			</choice>
+			<choice id="Sit around at home">
+				<jump>22</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="19">
+		<makeChoice id="Should I put on makeup?">
+			<choice id="Yes">
+				<jump>14</jump>
+			</choice>
+			<choice id="No">
+				<jump>15</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="20">
+		<makeChoice id="Do I really want to go out wearing makeup?">
+			<choice id="Yes">
+				<jump>16</jump>
+			</choice>
+			<choice id="No">
+				<jump>17</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="21">
+		<command>goingOut=true</command>
+		<text>I kept telling myself I should do this. And I'm feeling daring today!</text>
+		<if ready="!true">
+			<jump>23</jump>
+		</if>
+		<jump>24</jump>
+	</dialogue>
+	
+	<dialogue id="22">
+		<text>I'm not feeling very motivated today...</text>
+		<text>Guess I'll just sit around and play video games.</text>
+		<text>Heh. Would be pretty nice if I could make a trans character. That'll be the day.</text>
+		<jump>25</jump>
+	</dialogue>
+	
+	<dialogue id="23">
+		<text>If I'm gonna go out, I need to get ready first though.</text>
+		<text>I just need to tell myself that I look nothing like a [assignedGender]!</text>
+		<jump>3</jump>
+	</dialogue>
+	
+	<dialogue id="24">
+		<text>Alright, I'm here.</text>
+		<text>Man, I'm getting nervous already...</text>
+		<if gender="nonbinary">
+			<text>I wish they wouldn't split up clothes in such a binary way, but...</text>
+		</if>
+		<makeChoice id="Which section should I go to?">
+			<choice id="Men's">
+				<jump>30</jump>
+			</choice>
+			<choice id="Women's">
+				<jump>31</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="25">
+		<makeChoice id="Well it's about time to go to class. I should probably go, right?">
+			<choice id="Right">
+				<jump>26</jump>
+			</choice>
+			<choice id="I don't think so...">
+				<jump>27</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="26">
+		<text>Ah yeah, guess I'd better take notes on my laptop.</text>
+		<text>I have to see this login screen with the name [givenName] on it every day...</text>
+		<makeChoice id="I wonder if I should change my username to [name]. I doubt anyone will notice.">
+			<choice id="Of course! That's my name after all.">
+				<jump>28</jump>
+			</choice>
+			<choice id="Nah, better play it safe.">
+				<jump>29</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="27">
+		<if gotClothes="true">
+			<text>I went out and got clothes but...I'm still not feeling that great.</text>
+		</if>
+		<text>It's one of those days...</text>
+		<jump>end</jump>
+	</dialogue>
+	
+	<dialogue id="28">
+		<text>Small steps, [name]. You'll get there sooner than you think!</text>
+		<jump>end</jump>
+	</dialogue>
+	
+	<dialogue id="29">
+		<text>I don't want to risk anyone finding out.</text>
+		<text>It's OK though, I'll get there eventually.</text>
+		<jump>end</jump>
+	</dialogue>
+	
+	<dialogue id="30">
+		<if assignedGender="male">
+			<jump>32</jump>
+		</if>
+		<if assignedGender="female">
+			<jump>33</jump>
+		</if>
+	</dialogue>
+	
+	<dialogue id="31">
+		<if assignedGender="male">
+			<jump>33</jump>
+		</if>
+		<if assignedGender="female">
+			<jump>32</jump>
+		</if>
+	</dialogue>
+	
+	<dialogue id="32">
+		<text>These aren't the clothes I came here to get though. I already have plenty of these.</text>
+		<text>Wandering around there won't do me much good.</text>
+		<text>I'm so nervous and this was a silly idea anyway.</text>
+		<makeChoice id="I wonder if I should just leave.">
+			<choice id="Leave">
+				<jump>34</jump>
+			</choice>
+			<choice id="Don't leave">
+				<jump>35</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="33">
+		<text>Alright [name], deep breaths. You can do this.</text>
+		<if dysphoria="2">
+			<if assignedGender="male">
+				<text>God, why does my Adam's apple have to be so large?</text>
+			</if>
+		</if>
+		<if dysphoria="2">
+			<if assignedGender="female">
+				<text>If I didn't have such huge breasts I wouldn't feel nearly as awkward.</text>
+			</if>
+		</if>
+		<text>........</text>
+		<text>Alright, no one's looking! Just grab them and go.</text>
+		<command>gotClothes=true</command>
+		<text>OK, did it! Wish I could try them on, but this is good enough for me.</text>
+		<text>Now I just have to go to the self-</text>
+		<text>Oh, fuck.</text>
+		<text>There's no self checkout.</text>
+		<text>Deep breaths, [name]. Deep breaths.</text>
+		<color>white</color>
+		<text>Did you find everything OK, [assignedGender2]?</text>
+		<color>gray</color>
+		<text>A-ah, yes.</text>
+		<color>green</color>
+		<text>I wish you wouldn't call me that, though.</text>
+		<color>white</color>
+		<text>...</text>
+		<color>gray</color>
+		<text>...</text>
+		<color>white</color>
+		<text>...</text>
+		<color>gray</color>
+		<makeChoice id="......">
+			<choice id="Say the clothes are for a friend">
+				<jump>36</jump>
+			</choice>
+			<choice id="Don't say anything">
+				<jump>37</jump>
+			</choice>
+		</makeChoice>
+	</dialogue>
+	
+	<dialogue id="34">
+		<text>I'm not ready for this yet... I guess I'll just go.</text>
+		<jump>25</jump>
+	</dialogue>
+	
+	<dialogue id="35">
+		<text>No. I have to do this!</text>
+		<jump>33</jump>
+	</dialogue>
+	
+	<dialogue id="36">
+		<text>They're for a friend!</text>
+		<color>white</color>
+		<if assignedGender="male">
+			<text>I'm sure she'll appreciate them!</text>
+		</if>
+		<if assignedGender="female">
+			<text>I'm sure he'll appreciate them!</text>
+		</if>
+		<color>green</color>
+		<text>Whew, can't believe I got away with that.</text>
+		<jump>37</jump>
+	</dialogue>
+	
+	<dialogue id="37">
+		<color>white</color>
+		<text>You have a nice day, [assignedGender2]!</text>
+		<color>green</color>
+		<text>Ugh...</text>
+		<color>gray</color>
+		<text>Thank you, you too.</text>
+		<color>green</color>
+		<text>Well, I actually did it! And that wasn't as bad as I thought.</text>
+		<jump>25</jump>
+	</dialogue>
+	
+	<dialogue id="end">
+		<color>cyan</color>
+		<text>Closeted by Amy DiGiovanni</text>
+		<text>In loving memory of Leelah Alcorn.</text>
+	</dialogue>
+	
+</game>
