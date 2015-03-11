@@ -473,6 +473,7 @@
 	
 	<dialogue id="end">
 		<color>cyan</color>
+		<text>Closeted</text>
 		<text>In loving memory of all transgender people who have been lost to transphobia.</text>
 	</dialogue>
 	
